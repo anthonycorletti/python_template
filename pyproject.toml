@@ -1,0 +1,117 @@
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python_template"
+description = "A simple python project template."
+readme = "README.md"
+dynamic = ["version"]
+requires-python = ">=3.12"
+dependencies = []
+[[project.authors]]
+name = "Anthony Corletti"
+email = "anthcor@gmail.com"
+
+[project.license]
+text = "MIT"
+
+[project.optional-dependencies]
+dev = [
+    "build>=0.7.0",
+    "coverage>=7.2.7",
+    "greenlet>=2.0.2",
+    "invoke>=1.6.0",
+    "mypy>=0.910",
+    "packaging>=21.0",
+    "pre-commit>=2.17.0",
+    "pytest-asyncio>=0.21.1",
+    "pytest-cov>=3.0.0",
+    "pytest-xdist>=3.3.1",
+    "pytest>=6.2.5",
+    "rich>=13.4.2",
+    "ruff>=0.0.98",
+    "setuptools>=67.8.0",
+    "toml>=0.10.2",
+    "twine>=3.4.2",
+    "types-toml>=0.1.0",
+    "wheel>=0.36",
+]
+
+[project.urls]
+Home = "https://github.com/anthonycorletti/python_template"
+Documentation = "https://github.com/anthonycorletti/python_template"
+
+[tool.ruff]
+line-length = 88
+include = ["*.py"]
+exclude = ["dist", "build", ".venv"]
+target-version = "py311"
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
+disallow_untyped_defs = true
+exclude = ["dist", "build", ".venv"]
+
+[tool.ruff.lint]
+ignore = [
+    "D10",
+    "D203",
+    "D204",
+    "D213",
+    "D215",
+    "D400",
+    "D404",
+    "D406",
+    "D407",
+    "D408",
+    "D409",
+    "D413",
+    "D415",
+]
+select = ["E", "F", "I"]
+
+[tool.setuptools.package-data]
+python_template = ["py.typed"]
+
+[tool.pytest.ini_options]
+addopts = [
+    "-n",
+    "auto",
+    "-o",
+    "console_output_style=progress",
+    "--asyncio-mode=auto",
+    "--disable-warnings",
+    "--showlocals",
+    "--cov=python_template",
+    "--cov=tests",
+    "--cov-report=term-missing",
+    "--cov-report=xml",
+    "--cov-report=html",
+    "--cov-fail-under=100",
+]
+
+[tool.coverage.run]
+parallel = true
+source = ["python_template", "tests"]
+omit = ["*__init__.py"]
+concurrency = ["thread", "greenlet", "multiprocessing"]
+
+[tool.coverage.report]
+exclude_lines = ["pragma: no cover"]
+
+[tool.coverage.html]
+directory = "htmlcov"
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.setuptools.dynamic.version]
+attr = "python_template.__version__"
+
+[tool.setuptools.packages.find]
+exclude = ["tests"]
