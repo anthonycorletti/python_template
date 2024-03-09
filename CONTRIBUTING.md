@@ -34,4 +34,4 @@ Install dependencies.
 pip install -e '.[dev]'
 ```
 
-Now, you can run `inv -l` to list available tasks.
+Now, you can run `inv -l` to list available tasks. Run `inv all` to make sure you're ready to start developing.

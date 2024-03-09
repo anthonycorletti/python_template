@@ -9,7 +9,9 @@ A simple python project template.
     ```sh
     export MY_PROJECT_NAME="my_project"
     mkdir -p $MY_PROJECT_NAME
-    git clone https://github.com/anthonycorletti/python_template.git $MY_PROJECT_NAME
+    git clone https://github.com/anthonycorletti/python_template.git $MY_PROJECT_NAME && cd $MY_PROJECT_NAME
+    rm -r .git
+    git init
     ```
 
 1. Change the name of the `python_template` directory with the value you'd like to use for the name of your project.
