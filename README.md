@@ -10,7 +10,7 @@ A simple python project template.
     export MY_PROJECT_NAME="my_project"
     mkdir -p $MY_PROJECT_NAME
     git clone https://github.com/anthonycorletti/python_template.git $MY_PROJECT_NAME && cd $MY_PROJECT_NAME
-    rm -r .git
+    rm -rf .git
     git init
     ```
 
@@ -20,6 +20,6 @@ A simple python project template.
 
 1. Update `pyproject.toml` with relevant values for your project.
 
-1. Follow the instructions in CONTRIBUTING.md to get started.
+1. Follow the instructions in `CONTRIBUTING.md` to get started.
 
 1. That's it! Make this readme whatever you want now. The future is yours!
