@@ -289,7 +289,10 @@ def add(
         group (Optional[str]): The group to add the packages to.
             Defaults to None.
     """
-    print(f"Adding {packages} to {group}")
+    msg = f"Adding {packages}"
+    if group is not None:
+        msg += f" to group {group}"
+    print(msg)
     _update_pyproject_toml(
         packages=packages,
         dependency_action=DepencencyAction.add,
