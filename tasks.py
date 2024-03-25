@@ -252,21 +252,19 @@ def publish(ctx: Context) -> None:
 
 
 @task(iterable=["groups"])
-def install(
-    ctx: Context, editable: bool = True, groups: Optional[List[str]] = None
-) -> None:
+def install(ctx: Context, editable: bool = True, groups: List[str] = []) -> None:
     """Install python_template."""
-    if groups is None:
-        _groups = ""
+    if groups == []:
+        _groups = "."
     else:
-        _groups = f'[{",".join(groups)}]'
+        _groups = f'.[{",".join(groups)}]'
 
     if editable:
-        _editable = "-e "
+        _editable = " -e "
     else:
-        _editable = ""
+        _editable = " "
     ctx.run(
-        f"pip install {_editable}.{_groups}",
+        f"pip install{_editable}{_groups}",
         pty=_check_pty(),
         echo=True,
     )
